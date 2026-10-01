@@ -1,19 +1,19 @@
 <?php
     include "config/conexao.php";
-    //Post é uma variavel especial do PHP,recebe dados enviados
-    //Pelo Formulário quando usamos o method="POST" do HTMl.
+    // POST É UMA VARIAVEL ESPECIAL DO PHP, RECEBE DADOS ENVIADOS
+    // PELO FORMULÁRIO QUANDO USAMOS O METHOD="POST" DO HTML.
     $cliente = $_POST["cliente"];
     $equipamento = $_POST["equipamento"];
     $problema = $_POST["problema"];
     $data_entrada = $_POST["data_entrada"];
     $status = $_POST["status"];
 
-    $sql = "INSERT INTO ordem_servico
+    $sql = "INSERT INTO ordem_sevico
             (cliente, equipamento, problema, data_entrada, status)
-            values( ?, ?, ?, ?, ?)";
-    //STATEMENT
+            VALUES (?, ?, ?, ?, ?)";
+    // STATEMENT
     $stmt = $conexao->prepare($sql);
-    
+
     $stmt->bind_param(
         "sssss",
         $cliente,
@@ -27,6 +27,6 @@
         header("Location: index.php");
         exit;
     } else{
-        echo "Erro ao cadastrar ordem de servico.";
+        echo "Erro ao cadastrar ordem de serviço.";
     }
 ?>
